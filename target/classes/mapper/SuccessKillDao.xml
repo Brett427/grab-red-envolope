@@ -14,8 +14,8 @@
         </association>
     </resultMap>
     <insert id="insertSuccessKill">
-        insert ignore into success_killed(seckill_id, user_phone)
-        VALUES (#{seckillid}, #{userphone})
+        insert ignore into success_killed(seckill_id, user_phone,state)
+        VALUES (#{seckillid}, #{userphone}, 0)
     </insert>
     <!-- 主键冲突时忽略-->
     <select id="selectByidwithSeckill"  resultMap="successmap">

@@ -14,7 +14,7 @@ public interface SuccessKillDao {
 
 
     //根据id查询successkilled
-    SuccessKill selectByidwithSeckill(@Param("seckillid")long seckillid, @Param("userphone") long userphone);
+    List<SuccessKill> selectByidwithSeckill(@Param("seckillid")long seckillid, @Param("phone") long userphone);
 
     List<SuccessKill> judge(@Param("seckillid")long id, @Param("phone") long phone);
 }

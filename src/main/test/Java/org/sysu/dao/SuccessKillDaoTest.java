@@ -1,17 +1,14 @@
 package org.sysu.dao;
 
-import org.apache.ibatis.annotations.Param;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.sysu.pojo.SuccessKill;
-
 import javax.annotation.Resource;
-
 import java.util.List;
 
-import static org.junit.Assert.*;
+
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -25,15 +22,21 @@ public class SuccessKillDaoTest {
 
     @Test
     public void insertSuccessKill() throws Exception {
-//        long id =1000L;
-//        long phone = 12345678901L;
-//        int a = successKillDao.insertSuccessKill(id,phone);
-//        System.out.println(a);
+        long id =1001L;
+        long phone = 13938292822L;
+        int a = successKillDao.insertSuccessKill(id,phone);
+        System.out.println(a);
 
     }
 
     @Test
     public void selectByidwithSeckill() throws Exception {
+
+        long id =1000L;
+        long phone = 12345678901L;
+        List<SuccessKill> list = successKillDao.selectByidwithSeckill(id,phone);
+        System.out.println(list.size());
+        System.out.println(list.get(0).getSeckill().toString());
     }
 
 

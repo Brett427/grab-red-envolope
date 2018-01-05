@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sysu.dao.SeckillDao">
+
+    <resultMap id="seckillmap" type="org.sysu.pojo.Seckill">
+        <id property="seckill_id" column="seckillid"/>
+        <result property="name" column="name"/>
+        <result property="kucun" column="number"/>
+        <result property="startTime" column="start_time"/>
+        <result property="endTime" column="end_time"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+    <update id="reduceNumber" >
+        update seckill
+        SET number=number-1
+        WHERE seckill_id=#{seckillid} and start_time <![CDATA[ <= ]]> #{killTime}
+        and end_time <![CDATA[ >= ]]> #{killTime}
+        and number>0;
+    </update>
+
+    <select id="selectbyId" resultType="org.sysu.pojo.Seckill" resultMap="seckillmap">
+        SELECT seckill_id, name,number,start_time, end_time, create_time from seckill
+        WHERE seckill.seckill_id=#{seckillId}
+    </select>
+
+    <select id="selectAll" resultType="org.sysu.pojo.Seckill" resultMap="seckillmap">
+        SELECT seckill_id, name,number,start_time, end_time, create_time from seckill
+        ORDER BY create_time DESC LIMIT #{offset}, #{limit}
+    </select>
+</mapper>

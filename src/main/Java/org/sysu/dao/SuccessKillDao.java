@@ -7,7 +7,6 @@ import org.sysu.pojo.SuccessKill;
 import java.util.List;
 
 @Component
-
 public interface SuccessKillDao {
 
     int insertSuccessKill(@Param("seckillid")long seckillid, @Param("userphone") long userphone);

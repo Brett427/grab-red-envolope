@@ -2,6 +2,9 @@ package org.sysu.service.Impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 import org.sysu.dao.SeckillDao;
 import org.sysu.dao.SuccessKillDao;
@@ -20,14 +23,14 @@ import java.util.Date;
 import java.util.List;
 
 import static org.sysu.utils.jiami.getMD5;
-
+@Service
 public class SeckillServiceImpl implements SeckillService {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-
+    @Autowired
     private SeckillDao seckillDao;
-
+    @Autowired
     private SuccessKillDao successKillDao;
 
 
@@ -39,6 +42,8 @@ public class SeckillServiceImpl implements SeckillService {
     public Seckill getByid(long seckillid) {
         return seckillDao.selectbyId(seckillid);
     }
+
+
     /* 展示秒杀的接口地址*/
     public Exposer exportSeckillUrl(long seckillid) {
         Seckill seckill =seckillDao.selectbyId(seckillid);
@@ -62,9 +67,9 @@ public class SeckillServiceImpl implements SeckillService {
 
 
 
-
+    @Transactional
     public SeckillExecution executeSeckill(long seckillid, long phone, String md5) throws SeckillException, RepeatKillException, SeckillCloseException {
-        if(md5==null||md5.equals(getMD5(seckillid)))
+        if(md5==null||!md5.equals(getMD5(seckillid)))
         {
             throw new SeckillException("seckill data rewrite");
         }

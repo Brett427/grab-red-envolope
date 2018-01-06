@@ -36,4 +36,16 @@ public class Exposer {
         this.start = start;
         this.end = end;
     }
+
+    @Override
+    public String toString() {
+        return "Exposer{" +
+                "exposed=" + exposed +
+                ", md5='" + md5 + '\'' +
+                ", seckillid=" + seckillid +
+                ", now=" + now +
+                ", start=" + start +
+                ", end=" + end +
+                '}';
+    }
 }

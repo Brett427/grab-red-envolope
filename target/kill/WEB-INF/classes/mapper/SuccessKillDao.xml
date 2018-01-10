@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sysu.dao.SuccessKillDao">
+
+
+    <resultMap id="successmap" type="org.sysu.pojo.SuccessKill">
+        <id property="id" column="id"/>
+        <result property="userphone" column="user_phone"/>
+        <result property="state" column="state"/>
+        <result property="createTime" column="create_time"/>
+        <association property="seckill" column="seckill_id" select="org.sysu.dao.SeckillDao.selectbyId" javaType="org.sysu.pojo.Seckill">
+        </association>
+    </resultMap>
+    <insert id="insertSuccessKill">
+        insert ignore into success_killed(seckill_id, user_phone,state)
+        VALUES (#{seckillid}, #{userphone}, 0)
+    </insert>
+    <!-- 主键冲突时忽略-->
+    <select id="selectByidwithSeckill"  resultMap="successmap">
+        SELECT sk.create_time,sk.user_phone,sk.state,s.seckill_id,
+        s.name,s.number,s.number,s.start_time,s.end_time,s.create_time
+        FROM success_killed sk inner join seckill s  on sk.seckill_id=s.seckill_id where sk.seckill_id=#{seckillid} and sk.user_phone=#{phone}
+    </select>
+
+    <select id="judge" resultMap="successmap">
+        SELECT * from success_killed where user_phone=#{phone} and seckill_id=#{seckillid}
+    </select>
+</mapper>

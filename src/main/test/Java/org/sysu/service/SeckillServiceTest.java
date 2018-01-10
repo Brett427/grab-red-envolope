@@ -33,14 +33,14 @@ public class SeckillServiceTest {
 
     @Test
     public void getByid() throws Exception {
-        long id =1001;
+        Long id =1001l;
         Seckill seckill =seckillService.getByid(id);
         logger.info("seckill={}",seckill);
     }
 
     @Test
     public void exportSeckillUrl() throws Exception {
-        long id =1000;
+        Long id =1000l;
         Exposer exposer =seckillService.exportSeckillUrl(id);
         logger.info("exposer={}",exposer);
         System.out.println(exposer);
@@ -48,8 +48,8 @@ public class SeckillServiceTest {
 
     @Test
     public void executeSeckill() throws Exception {
-        long id = 1000;
-        long phone = 12345678990L;
+        Long id = 1000l;
+        Long phone = 12345678990L;
 
     }
 

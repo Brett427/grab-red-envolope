@@ -26,7 +26,7 @@ public class SeckillDaoTest {
 
     @Test
     public void selectbyId() throws Exception {
-        long id =1000;
+        Long id =1000l;
         Seckill seckill = seckillDao.selectbyId(id);
         System.out.println(seckill.getName());
         System.out.println(seckill);
@@ -43,7 +43,7 @@ public class SeckillDaoTest {
     @Test
     public void reduceNumber() throws Exception {
         Date killtime = new Date();
-        int update = seckillDao.reduceNumber(1000,killtime);
+        int update = seckillDao.reduceNumber(1000l,killtime);
         System.out.println(killtime);
     }
 }

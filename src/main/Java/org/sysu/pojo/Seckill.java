@@ -4,18 +4,18 @@ import java.util.Date;
 
 public class Seckill {
 
-    private long seckillid;
+    private Long seckillid;
     private String name;
     private int kucun;
     private Date startTime;
     private Date endTime;
     private Date createTime;
 
-    public long getSeckillid() {
+    public Long getSeckillid() {
         return seckillid;
     }
 
-    public void setSeckillid(long seckillid) {
+    public void setSeckillid(Long seckillid) {
         this.seckillid = seckillid;
     }
 

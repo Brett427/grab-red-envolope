@@ -22,8 +22,8 @@ public class SuccessKillDaoTest {
 
     @Test
     public void insertSuccessKill() throws Exception {
-        long id =1001L;
-        long phone = 13938292822L;
+        Long id =1001L;
+        Long phone = 13938292822L;
         int a = successKillDao.insertSuccessKill(id,phone);
         System.out.println(a);
 
@@ -32,8 +32,8 @@ public class SuccessKillDaoTest {
     @Test
     public void selectByidwithSeckill() throws Exception {
 
-        long id =1000L;
-        long phone = 12345678901L;
+        Long id =1000L;
+        Long phone = 12345678901L;
         List<SuccessKill> list = successKillDao.selectByidwithSeckill(id,phone);
         System.out.println(list.size());
         System.out.println(list.get(0).getSeckill().toString());
@@ -43,8 +43,8 @@ public class SuccessKillDaoTest {
     @Test
     public void judge() throws Exception
     {
-        long id =1000L;
-        long phone = 12345678901L;
+        Long id =1000L;
+        Long phone = 12345678901L;
         List<SuccessKill> list = successKillDao.judge(id,phone);
         System.out.println(list.size());
         System.out.println(list.get(0).getSeckill().toString());

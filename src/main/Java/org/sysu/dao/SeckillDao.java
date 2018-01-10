@@ -10,10 +10,10 @@ import java.util.List;
 public interface SeckillDao {
 
     //减少库存 秒杀发生时的时间
-    int reduceNumber(@Param("seckillid") long seckillid,@Param("killTime") Date killTime);
+    int reduceNumber(@Param("seckillid") Long seckillid,@Param("killTime") Date killTime);
 
     // 根据ID查询秒杀对象
-    Seckill selectbyId(long seckillId);
+    Seckill selectbyId(Long seckillId);
 
 
     //根据偏移量查询秒杀商品列表

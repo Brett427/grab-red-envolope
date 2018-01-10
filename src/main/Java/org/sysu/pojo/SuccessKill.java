@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class SuccessKill {
     private int id;
-    private long killid;
-    private long userphone;
+    private Long killid;
+    private Long userphone;
     private short state;
     private Date createTime;
     private Seckill seckill;
@@ -31,19 +31,19 @@ public class SuccessKill {
         this.seckill = seckill;
     }
 
-    public long getKillid() {
+    public Long getKillid() {
         return killid;
     }
 
-    public void setKillid(long killid) {
+    public void setKillid(Long killid) {
         this.killid = killid;
     }
 
-    public long getUserphone() {
+    public Long getUserphone() {
         return userphone;
     }
 
-    public void setUserphone(long userphone) {
+    public void setUserphone(Long userphone) {
         this.userphone = userphone;
     }
 

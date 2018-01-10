@@ -20,6 +20,9 @@ public class SeckillResult<T> {
         this.error = error;
     }
 
+    public SeckillResult() {
+    }
+
     public boolean isSuccess() {
         return success;
     }

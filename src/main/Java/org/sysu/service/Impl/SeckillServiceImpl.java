@@ -39,13 +39,13 @@ public class SeckillServiceImpl implements SeckillService {
         return seckillDao.selectAll(0,4);
     }
 
-    public Seckill getByid(long seckillid) {
+    public Seckill getByid(Long seckillid) {
         return seckillDao.selectbyId(seckillid);
     }
 
 
     /* 展示秒杀的接口地址*/
-    public Exposer exportSeckillUrl(long seckillid) {
+    public Exposer exportSeckillUrl(Long seckillid) {
         Seckill seckill =seckillDao.selectbyId(seckillid);
         if(seckill==null)
         {
@@ -68,7 +68,7 @@ public class SeckillServiceImpl implements SeckillService {
 
 
     @Transactional
-    public SeckillExecution executeSeckill(long seckillid, long phone, String md5) throws SeckillException, RepeatKillException, SeckillCloseException {
+    public SeckillExecution executeSeckill(Long seckillid, Long phone, String md5) throws SeckillException, RepeatKillException, SeckillCloseException {
         if(md5==null||!md5.equals(getMD5(seckillid)))
         {
             throw new SeckillException("seckill data rewrite");
@@ -86,7 +86,7 @@ public class SeckillServiceImpl implements SeckillService {
             else
             {
                 List<SuccessKill> list1 = successKillDao.judge(seckillid,phone);
-                if(list1.size()>1)
+                if(list1.size()>=1)
                 {
                     throw new RepeatKillException("repeat kill");
                 }

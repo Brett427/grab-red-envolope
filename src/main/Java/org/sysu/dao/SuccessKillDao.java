@@ -9,11 +9,11 @@ import java.util.List;
 @Component
 public interface SuccessKillDao {
 
-    int insertSuccessKill(@Param("seckillid")long seckillid, @Param("userphone") long userphone);
+    int insertSuccessKill(@Param("seckillid")Long seckillid, @Param("userphone") Long userphone);
 
 
     //根据id查询successkilled
-    List<SuccessKill> selectByidwithSeckill(@Param("seckillid")long seckillid, @Param("phone") long userphone);
+    List<SuccessKill> selectByidwithSeckill(@Param("seckillid")Long seckillid, @Param("phone") Long userphone);
 
-    List<SuccessKill> judge(@Param("seckillid")long id, @Param("phone") long phone);
+    List<SuccessKill> judge(@Param("seckillid")Long id, @Param("phone") Long phone);
 }

@@ -10,7 +10,7 @@ public class jiami {
         return slat;
     }
 
-    public static String getMD5(long seckillid)
+    public static String getMD5(Long seckillid)
     {
         String base = seckillid + "/"+ getSlat();
         String md5 = DigestUtils.md5DigestAsHex(base.getBytes());

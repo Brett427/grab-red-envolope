@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 import org.sysu.dao.SeckillDao;
 import org.sysu.dao.SuccessKillDao;
+import org.sysu.dao.cache.RedisDao;
 import org.sysu.dto.Exposer;
 import org.sysu.dto.SeckillExecution;
 import org.sysu.enums.killStateEnum;
@@ -33,6 +34,8 @@ public class SeckillServiceImpl implements SeckillService {
     @Autowired
     private SuccessKillDao successKillDao;
 
+    @Autowired
+    private RedisDao redisDao;
 
     public List<Seckill> getSeckillList() {
 
@@ -46,11 +49,24 @@ public class SeckillServiceImpl implements SeckillService {
 
     /* 展示秒杀的接口地址*/
     public Exposer exportSeckillUrl(Long seckillid) {
-        Seckill seckill =seckillDao.selectbyId(seckillid);
+        // 缓存优化
+        /*
+        * 1. get from cache
+        * */
+        Seckill seckill =redisDao.getseckill(seckillid);
         if(seckill==null)
         {
-            return new Exposer(false,seckillid);
+            seckill =seckillDao.selectbyId(seckillid);
+            if(seckill==null)
+            {
+                return new Exposer(false,seckillid);
+            }
+            else
+            {
+                redisDao.putSeckill(seckill);
+            }
         }
+
         //获取秒杀单的开始时间和结束时间
         Date startTime = seckill.getStartTime();
         Date endTime = seckill.getEndTime();
